@@ -1,0 +1,218 @@
+
+
+  <div class="tab__content">
+
+    <h2>Full File Showing all the Nouns and Synonyms in Context</h2>
+
+    <div class="scroller">
+
+      {# LOOP THE LIST OF LINES, SOME ARE STRINGS AND SOME ARE DICTIONARIES #}
+      {% for line in lines %}
+
+        {# LOOP EACH INDIVIDUAL ITEMS FROM WITHIN THE LIST, SIMILAR TO SPLIT() #}
+        {% for item in line %}
+        
+          {# CHECK IF ITEM IS A DICTIONARY #}
+          {% if item is mapping  %}
+
+            {# LOOP THE DICTIONARY OF ITEMS #}
+            {% for word, lst in item.items() %}
+
+              {# CHECK IF LST IS EMPTY #}
+              {% if lst is none %}
+
+                {# ITS JUST A STRING SO PRINT IT AS A NOUN #}
+                <a id="{{ word }}" class="noun">{{ word+" " }}</a>
+                
+              {# OR HAS ELEMENTS #}
+              {% else %}
+
+                <a data-toggle="tooltip" data-placement="top" data-original-title="{% for syn in lst %}{{ syn+' ' }}{% endfor %}"><a id="{{word}}">{{word+" "}}</a></a>
+
+              {% endif %}
+
+            {% endfor %}
+
+          {# OR JUST A STRING #}
+          {% else %}
+
+            {# PRINT OUT THE WORD ALONE #}
+            {{ item+" " }}
+
+          {% endif %}
+
+        {% endfor %}
+
+        <br />
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+  <div class="tab__content">
+
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">List of all the Nouns Alone with their Synonyms</div>
+      <div class="panel-body">
+        <p>...</p>
+      </div>
+    
+      <!-- Table -->
+      <table class="table odd">
+        <tbody>
+          <tr>
+            <th>#</th>
+            <th>Noun</th>
+            <th>Alternatives</th>
+          </tr>
+
+          {% for word, lst in nouns.items() %}
+            <tr>
+              <td>
+                {{ loop.index }}
+              </td>
+              
+              <td>
+                <a id="{{word}}2">{{word}}</a>
+              </td>
+
+              <td>
+                
+                {% if lst is not none %} 
+                  {% for syn in lst %}
+                  <a href="#{{syn}}2">{{syn+" "}}</a>
+                  {% endfor %}
+                {% endif %}
+
+              </td>
+            </tr>
+
+          {% endfor %}
+
+        </tbody>
+
+      </table>
+
+    </div> 
+
+  </div> 
+
+  </div>
+
+
+
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('main.static', filename='css/tabs.css') }}" />
+{% endblock %}
+
+{% block content %}
+
+  <div class="tab-wrap">
+      
+    <input type="radio" id="tab1" name="tabGroup1" class="tab" checked>
+    <label for="tab1">File View</label>
+
+    <input type="radio" id="tab2" name="tabGroup1" class="tab">
+    <label for="tab2">Nouns View</label>
+
+    <div class="tab__content">
+
+      <h2>Full File Showing all the Nouns and Synonyms in Context</h2>
+
+      <div class="scroller">
+
+        {% for line in lines %}
+
+          {% for item in line %}
+          
+            {% if item is mapping  %}
+            
+              {% for word, lst in item.items() %}
+              
+                {% if lst is none %} 
+                  <div class="noun">
+                    <a id="{{word}}">{{word+" "}}</a>
+                  </div>
+                  
+                {% else %}
+                  <div class="tooltip">
+                    <a id="{{word}}">{{word+" "}}</a>
+                    <span class="tooltiptext top">
+                      {% for syn in lst %}
+                      <a href="#{{syn}}">{{syn+" "}}</a><br />
+                      {% endfor %}
+                    </span>
+                  </div>
+
+                {% endif %}
+
+              {% endfor %}
+
+            {% else %}
+              {{item+" "}}
+
+            {% endif %}
+
+          {% endfor %}
+
+          <br />
+
+        {% endfor %}
+
+      </div>
+    
+    </div>
+
+    <div class="tab__content">
+
+      <h2>List of all the Nouns Alone with their Synonyms</h2>
+
+      <div class="scroller">
+
+        <table class="odd">
+
+          <tbody>
+            <tr>
+              <th>#</th>
+              <th>Noun</th>
+              <th>Alternatives</th>
+            </tr>
+
+            {% for word, lst in nouns.items() %}
+              <tr>
+                <td>
+                  {{ loop.index }}
+                </td>
+                
+                <td>
+                  <a id="{{word}}2">{{word}}</a>
+                </td>
+
+                <td>
+                  
+                  {% if lst is not none %} 
+                    {% for syn in lst %}
+                    <a href="#{{syn}}2">{{syn+" "}}</a>
+                    {% endfor %}
+                  {% endif %}
+
+                </td>
+              </tr>
+
+            {% endfor %}
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div> 
+    
+  </div>
+
+{% endblock %}

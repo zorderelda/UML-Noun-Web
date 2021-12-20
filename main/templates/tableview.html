@@ -1,0 +1,41 @@
+<div class="card-header">
+    Table View of the Nouns and Synonyms
+</div>
+<div class="card-body">
+    <table class="table table-success table-hover table-striped table-bordered border-primary">
+        <tbody>
+
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Noun</th>
+                    <th>Alternatives</th>
+                </tr>
+            </thead>
+
+            {% for word, lst in nouns.items() %}
+                <tr>
+                <td>
+                    {{ loop.index }}
+                </td>
+                
+                <td>
+                    <div id="{{ word }}-table">{{ word }}</div>
+                </td>
+
+                <td>
+                    
+                    {% if lst is not none %} 
+                        {% for syn in lst %}
+                            <a href="#{{ syn }}-table" data-link="0">{{ syn }}</a>
+                        {% endfor %}
+                    {% endif %}
+
+                </td>
+                </tr>
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>

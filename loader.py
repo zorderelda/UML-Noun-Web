@@ -5,6 +5,11 @@ from dotenv import load_dotenv
 
 def create_app():
 
+    # Add the configuration from the dotenv
+    APP_ROOT = os.path.join(os.path.dirname(__file__), '..')   # refers to application_top
+    dotenv_path = os.path.join(APP_ROOT, '.flaskenv')
+    load_dotenv(dotenv_path)
+
     app = Flask(__name__)
 
     # Setup session stuff
@@ -26,10 +31,5 @@ def create_app():
     return app
 
 if __name__ == "__main__":
-
-    # Add the configuration from the dotenv
-    APP_ROOT = os.path.join(os.path.dirname(__file__), '..')   # refers to application_top
-    dotenv_path = os.path.join(APP_ROOT, '.flaskenv')
-    load_dotenv(dotenv_path)
     
     create_app().run()

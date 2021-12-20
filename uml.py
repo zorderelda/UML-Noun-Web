@@ -1,16 +1,22 @@
 import os
 from flask import Flask
+from flask_dotenv import DotEnv
 from datetime import timedelta
-from dotenv import load_dotenv
+
+import redis
+from os import environ
+
+# Local
+from config import config
 
 def create_app():
 
-    # Add the configuration from the dotenv
-    APP_ROOT = os.path.join(os.path.dirname(__file__), '..')   # refers to application_top
-    dotenv_path = os.path.join(APP_ROOT, '.flaskenv')
-    load_dotenv(dotenv_path)
-
     app = Flask(__name__)
+    app.config.from_object(config['development'])
+
+    # Import the .env file
+    env = DotEnv()
+    env.init_app(app)
 
     # Setup session stuff
     app.permanent_session_lifetime = timedelta(minutes=5)

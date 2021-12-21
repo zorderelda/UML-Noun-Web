@@ -3,11 +3,11 @@ Description=Flask Web Application Server using Gunicorn
 After=network.target
 
 [Service]
-User=zor
-Group=zor
-WorkingDirectory="/home/zor/Documents/COMP 361/UML-Noun-Web/"
-Environment="PATH=/home/zor/Documents/COMP 361/UML-Noun-Web/venv/bin"
-ExecStart=/bin/bash -c 'source /home/zor/Documents/COMP 361/UML-Noun-Web/venv/bin/activate; ./home/zor/Documents/COMP 361/UML-Noun-Web/venv/bin/gunicorn -w 3 --bind unix:/tmp/noun-web/ipc.sock wsgi:app'
+User=user
+Group=user
+WorkingDirectory="/home/user/UML-Noun-Web/"
+Environment="PATH=/home/user/UML-Noun-Web/venv/bin"
+ExecStart=/bin/bash -c 'source /home/user/UML-Noun-Web/venv/bin/activate; ./home/user/UML-Noun-Web/venv/bin/gunicorn -w 3 --bind unix:/tmp/noun-web/ipc.sock wsgi:app'
 Restart=always
 
 [Install]

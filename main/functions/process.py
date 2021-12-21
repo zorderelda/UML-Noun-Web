@@ -1,16 +1,28 @@
-import os
+import tempfile, pathlib, docx, textract
 from openpyxl import Workbook
 from openpyxl.styles.fills import PatternFill
 from openpyxl.styles.colors import Color
 from openpyxl.styles.borders import Border, Side
 from openpyxl import Workbook
-
-import docx
 from docx.shared import RGBColor
 
 from nltk import pos_tag
 from nltk.corpus import wordnet, stopwords
 from nltk.tokenize import wordpunct_tokenize
+
+def ExtractText(filename):
+
+    # Create the temp file
+    temp = tempfile.NamedTemporaryFile(suffix='.txt', delete=False)
+    pt = pathlib.Path(temp.name)
+
+    # Get text
+    text = textract.process(filename)
+
+    with open(temp.name, 'w') as f:
+        f.write(text.decode('utf-8'))
+        
+    return temp.name
 
 def WritePageDocx(filename, lines):
 

@@ -9,3 +9,4 @@ PyJWT
 python-docx
 redis
 wordnet
+textract

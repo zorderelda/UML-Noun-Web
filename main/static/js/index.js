@@ -17,6 +17,10 @@ window.onload = function(event)
             let fade = document.getElementById(href);
             let counter = 10;
 
+            // Make sure its a real variable
+            if(fade == null)
+                return
+
             let baseback = fade.style.backgroundColor;
             let basecolor = fade.style.color;
     
@@ -109,6 +113,7 @@ async function doFillFetch()
 {
     let apiurl = document.querySelector('meta[name=data-api]').getAttribute('content') + 'fill';
     let jwt = document.querySelector('meta[name=token]').getAttribute('content');
+    let button = document.getElementById('top-dl-button');
 
     fetch(apiurl, 
     {
@@ -134,17 +139,17 @@ async function doFillFetch()
         document.getElementById('tableview').innerHTML = data['tableview'];
 
         // Enable the download
-        let button = document.getElementById('top-dl-button')
         button.removeAttribute('disabled');
-        button.children[0].classList.remove('visually-hidden');
-        button.children[1].classList.add('visually-hidden');
-        button.children[2].classList.add('visually-hidden');
     })
 
     .catch(function (error) 
     {
         console.warn(error);
     });
+
+    button.children[0].classList.remove('visually-hidden');
+    button.children[1].classList.add('visually-hidden');
+    button.children[2].classList.add('visually-hidden');
 }
 
 async function doDownloadFetch(value)

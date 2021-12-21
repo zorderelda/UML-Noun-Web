@@ -1,15 +1,11 @@
-from os import path
 import tempfile, pathlib
-from openpyxl import Workbook
-from flask import render_template, request, session, flash, jsonify, url_for, redirect, send_from_directory, abort
-
+from flask import current_app, render_template, request, session, flash, jsonify, url_for, redirect, send_from_directory, abort
 from werkzeug.utils import secure_filename
-from werkzeug.wrappers import response
 
 # From our Blueprints
 from ..main import bp, jwt
 from ..forms import UploadForm
-from ..functions.process import ProcessFile, WritePageDocx, WriteTableExcel
+from ..functions.process import ProcessFile, WritePageDocx, WriteTableExcel, ExtractText
 
 # Create a default route
 @bp.route("/")
@@ -33,17 +29,38 @@ def compile():
     
     if form.validate_on_submit():
 
+        # Get uploaded filename
         f = request.files.get('upload')
-        f.save(secure_filename(f.filename))
-        
-        # Store in the session the Processed file
-        session['lines'], session['nouns'] = ProcessFile(secure_filename(f.filename))
 
-        # Return data completed
-        return jsonify({'completed': True})
+        # Secure filename
+        sfilename = secure_filename(f.filename)
 
-    # Return data failed
-    return jsonify({'completed': False})
+        # Assign to path
+        fpath = pathlib.Path(sfilename)
+
+        # Make sure there is a suffix
+        if fpath.suffix:
+           
+            # Check filenames
+            if fpath.suffix.lower().replace('.', '') in current_app.config['ALLOWED_EXTENSIONS']:
+
+                # Save the file
+                f.save(sfilename)
+
+                # Extract the text from it
+                sfilename = ExtractText(sfilename)
+                
+                # Store in the session the Processed file
+                session['lines'], session['nouns'] = ProcessFile(sfilename)
+
+                # Return data completed
+                return jsonify({'completed': True})
+
+    # Tell user something wrong
+    flash('Something wrong with file, please try again')
+
+    # Refresh
+    return redirect(url_for('main.index'))
 
 # Create a compiled route
 @bp.route("/fill", methods=['POST'])
@@ -63,11 +80,11 @@ def fill():
     # Verify the JWT token
     if jwt.decode_jwt_token(auth_token) != session.sid:
 
-        # Tell user to upload a file!
-        flash('Refreshing page, please upload again')
-
         # Clear session
         session.clear()
+
+        # Tell user to upload a file!
+        flash('Token Expired, refreshing page, please upload again')
 
         # Refresh
         return redirect(url_for('main.index'))
@@ -125,4 +142,9 @@ def download():
             return send_from_directory(directory=pt.parent, path=pt.name, as_attachment=True)
         
     except FileNotFoundError:
-        abort(404)
+
+        # Tell user something wrong
+        flash('File creation failed, please try again')
+
+        # Refresh
+        return redirect(url_for('main.index'))

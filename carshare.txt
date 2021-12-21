@@ -1,0 +1,114 @@
+Membership
+Recruitment
+The goals for recruiting or sales for the pilot project are to move interested potential members in the desired geographic areas to actual membership. The marketing activities will lead to interest by potential members. Current members will recommend potential new members. A database of interest contacts will be maintained. 
+Periodically triage by postal code will be performed on the database. Those outside of these areas are sent information about car sharing, and retained as potential members for future expansion. Those with zip codes where service will likely not be offered are sent more general information making it clear that service will not be available to them in the immediate future. 
+For prospective members living in areas already being served, a complete application package is sent. The application packages are completed by potential members, and submitted with the application fee. The application packages include the car share member agreement that is to be signed as well as driver license, insurance, and credit information.
+The database is purged on a regular basis to remove “stale” contacts (those who have not expressed further interest) or those outside the geographical areas targeted for expansion of the service.
+Membership application screening
+The membership application must be accompanied by an application fee based on the organization’s costs incurred in bringing in new members. This is nonrefundable. For the car share organization, it is intended to cover part of the set up costs and initial training, including driver and credit screening. For the member, it shows sincerity of interest and should not be a barrier to membership. The license transfer costs and loan fees for buying are car might be considered analogous to the application fee. The recommended application fee is $50. 
+Membership applications are reviewed by the manager. Those complete, apparently qualified, and meeting geographic criteria of the pilot project are retained, and a credit and driving record check is performed. 
+Potential members meeting all the credit, driving history, and geographic criteria are enlisted as pilot project members. Otherwise the applications will be returned with explanation. Newly enrolled members will be called and asked to attend a compulsory introduction training and information meeting. 
+The application process is completed with the payment of a membership deposit. The deposit represents the capitalization of the car share organization; in effect it represents the purchase of a “fractional car.” The deposit is fully refundable (without interest) to members who chooses to leave the organization. The deposit may be useful as a screen for serious car share members. It can be used as a hedge against non-payment, and has been recommended by an insurance carrier as a deductible for member-caused damage. The recommended membership deposit is $600.
+Once these formalities have been completed, a member record and account is set up and a SmartCard and PIN issued. Because of the costs associated with activating SmartCards, and deactivating lost ones, a deposit of $25 is charged when a card is issued (or re-issued).
+
+Member Profiles
+Members create and maintain profiles indicating various preferences:
+    • Type of vehicle (e.g. compact, full size, etc.)
+    • Preferred vehicle location (near home, office, etc.)
+    • Preferred means of payment (e.g. cheque, automatic bank or credit card payment)
+    • Preferred means of receiving news and other communications such as account statements (e.g. mail, email)
+    • Password for Web access
+
+Member can change any of these preferences either online, or by telephone through the car sharing organization’s staff.
+Member rights and responsibilities 
+Towing charges for improper parking, parking tickets, and citations for moving violations will be the responsibility of the member using the vehicle at the time of the infraction.  Failure to comply with the car share organization’s rules could result in the member’s termination. In an accident where the member is at fault or where a member damages a car share vehicle, the insurance deductible shall be paid by the member. Car share members will be responsible for moving violations. The car share organization records will show who used the vehicle at the time of the infraction, and citations will be forwarded to that member.
+Members are able at any time, by telephone or through the Web interface, to 
+    • Update their personal information
+    • Change their preferences
+    • Check their pending reservations
+    • Check their trips completed
+    • Check their accounts
+Member penalties
+Penalties are not proposed for member noncompliance during the pilot project. 
+Non-compliance can include failure to return vehicles on time, failure to leave the vehicle in a tidy condition, neglecting to fill the fuel tank at the proper time, or unauthorized usage. Failure to return on time results in a significant inconvenience for the next member using the vehicle. They may miss an event, have to cancel an appointment, or pay for a taxi.  There will also be administrative costs to deal with unavailable vehicles. The penalty for late returns should be used primarily to compensate the next member and thus should be based on lost time and costs of alternatives (such as a taxi). Member retraining should be considered, if the problem reoccurs during a set period—perhaps a month. Excessive failures to return may eventually result in termination of membership.  Failure to leave a vehicle tidy has a clear cost—that of vehicle cleaning, usually by the manager. There may be questions about which member created the problem. A cleaning fee and member retraining may be adequate to deal with this issue. Neglecting to fill the fuel tank at the proper time may cause hardship for the next member using the vehicle. It may, however, be difficult to assess a monetary penalty for this. The significance of these problems will be assessed during the pilot and potential for monetary penalties to improve behavior will be considered in the evaluation.  
+Member Termination 
+If a member in good standing (without an outstanding account balance) wishes to end their membership, they must return execute a written termination notice, return their SmartCard, and complete an exit survey for evaluation purposes. The membership deposit will be returned without interest within one month. 
+Membership may also be terminated at the discretion of the car share organization. Reasons for termination may include: 
+    • Failure to keep accounts current (more than 90 days overdue)
+    • Failure to meet the member agreement obligations 
+    • Operation vehicle in conflict with the member agreement (for example, DUI or some other moving violations)
+    • Exceeding a certain number of moving traffic violations (for example, four speeding tickets). 
+
+Under discretionary termination, the car share organization will require that the member return the SmartCard and execute a written termination agreement. If charges are pending against the member’s account, they will be deducted from the membership deposit before it is returned. The balance of the deposit will be returned without interest within one month (deposit returns will follow the billing cycle).
+Operations 
+The Fleet
+Recommended vehicles for the car share pilot project are compact to mid-sized, four-door sedans. The fleet mix might also include some station wagons in the same makes and models to meet a broader range of members’ needs. The market study suggested that 86% of those likely to join would find compact vehicles would most often meet their needs. By comparison, mid-size or full-size cars would be needed only by 31% of those likely to join. Recommendations are based on lowest overall costs for vehicle operation and ownership cited in Money Magazine’s Annual Car Buyer’s Guide. These costs included price, depreciation, maintenance, repairs, and fuel.  Focus groups indicated some interest in other vehicle types, such as pick-up trucks and minivans. Determining the vehicle selection will be an issue after the pilot project.
+When vehicles are acquired, they are added to the database and assigned to a vehicle location as required by the operational plan. The vehicle record in the database includes the warranty maintenance schedule that can be searched to identify warranty service checkpoints.
+Vehicle Maintenance and Repair
+Scheduled (warranty) maintenance is best performed by a contract service. This may not necessarily be through a dealership. As a variety of different vehicle makes will eventually be part of the car share fleet, selected contract services should be authorized to work on vehicles and not void warranties. 
+Routine or scheduled maintenance (such as warranty services) will be a scheduled activity based on warranty requirements or vehicle usage statistics (time or mileage). As every member vehicle use is completed, the system checks whether warranty or other schedule checkpoints are imminent. If so, an email notification is generated for the appropriate service contractor who will then schedule a reservation for maintenance purposes. If repairs or other non-routine maintenance are required, the manager will contact the contract maintenance service which will reserve the vehicle for the time required to service the vehicle. When possible, the contractor will pick up vehicles and return them when serviced. If necessary, the manager delivers vehicles to repair locations. All maintenance and repairs are entered in the vehicle’s maintenance record by the contract maintenance service.
+Maintenance and tidiness check of vehicles will be performed on a regular basis, or as required. Fueling, vacuuming, and washing may be conducted at this time, or during other times when the vehicle can be scheduled for service. If the vehicle is moved away from its designated location for this basic service, its use will be scheduled through the reservations service. At the onset of the pilot program the maintenance and tidiness checks of vehicles should be more frequent, perhaps weekly.
+
+Vehicle Locations
+The majority of car share cars will be parked in single-vehicle locations. Off-street, assigned parking is needed for car sharing so that members can always find a car by location—they will not necessarily be able to recognize it. There may eventually be some situations in permit parking areas where reserved on-street parking may be available for car share vehicles. This would be negotiated with the City of Futureville.  
+The car sharing database maintains information on all vehicle locations. Locations, and the number of vehicles assigned to each location, may change as membership numbers and addresses change submit. As vehicles should be within a five-minute walk of any member, locations should be chosen to meet that characteristic. As assigned off-street parking is necessary for car share vehicles, potential members will be asked if they can provide such a parking space. They may not be compensated for the use of their parking at market rates, as they will have the advantage of being closest to the car. 
+Car Share Fee Structure 
+The fees the car share organization charges to its members provide the operations only income. Fees must cover all operating expenses, capitalization, interest, depreciation, and insurance. Operating expenses include the reservation system and management, plus fuel, maintenance, parking, cleaning, and repair of vehicles. When weighted against this myriad of expenses, there are significant costs these fees must support. For the pilot project the fees structure only offers an individual membership category.  The entire fee structure for the pilot project will be reviewed and assessed in the evaluation. Revisions will be made as needed. 
+
+The fee structure should not only cover costs, but do so in such a way that reflects the costs incurred. For a car share organization or a car owner, there are several cost categories: acquisition, capitalization, operation, and usage. The fees proposed cover each of these categories. Fees for the car share pilot project will consist of: 
+
+First Hour Charge 
+Some car share organizations have annual fees or monthly fees. These fees address the costs associated with providing service to members. A significant portion of these service costs are associated with member scheduling. Each reservation is estimated to cost $3.00 to make. For the pilot project, a fee per vehicle use is proposed. This is similar to a taxi’s meter drop charge. A First Hour Charge also sends a message to members to consolidate trips. The recommended First Hour Charge is $3.00 and it will be presented to members as part of the Per Hour Fee. If the member does not actually use the vehicle during the scheduled time, and does not cancel the reservation within six hour of usage, they will be assessed the First Hour charge. 
+Per Hour Fee 
+For the pilot project, an hourly fee for usage is also proposed. A Per Hour Fee will encourage members to use their time wisely. The recommended weekday Per Hour Fee is $1.50 per hour. This is not high enough to discourage reasonable time use, but will be considered by members using the vehicle. 
+Weekend use of car share vehicles is expected to be higher than weekday use. A Per Hour Fee for weekends of $2.00 per hour is recommended. 
+Per kilometer fee 
+A fee for distance driven is also assessed. A Per KM Fee represents the vehicle’s operating cost. The recommended Per KM Fee is currently set at $0.40 per km. This fee may be adjusted on a monthly basis to reflect operating costs (such as fuel costs). If the member does not actually use the vehicle during the scheduled hours, no Per KM Fee is charged.
+Vehicle Access and Data Collection 
+The COCOS StandAlone System is designed for the complete electronic management of decentralised fleet locations. The main components are the member’s SmartCard and the on-board computer for the vehicle with an integrated GSM cellular communication module.
+The intuitive handling is a key feature. The member’s identification is the SmartCard. After successful identification, and verification of the member’s reservation, the central locking of the car unlocks, the customer gets in, uses his/her PIN to access the vehicle’s key, starts the car and drives away.
+
+During the trip, the board computer records all driven times and distances and optionally the vehicle position. Upon returning the car, all data is automatically sent to the central service office. 
+
+The COCOS StandAlone System is well suited for decentralized locations with few vehicles, like car-sharing locations outside of the downtown area or decentralized company fleets. It is highly reliable, simple, secure and fully automated, for trouble-free handling, from booking to billing.
+Reservation System 
+The attributes desired for a scheduling service are: offering vehicle scheduling up to one year in advance, quick processing through the reservation system, offering vehicles at different times or different locations when desired times/locations are not available, toll-free telephone access, and 24-hour availability. 
+Members must understand a vehicle may not always be available. The availability rate for vehicles at all locations will be monitored and reported to members monthly in member communications. Vehicles and locations will be adjusted as required to optimize availability. The reservations service will offer alternative vehicles and times of use if a desired location does not have a preferred vehicle available at the requested time.
+
+A number of member reservation system arrangements were considered for the pilot project. Among these were reservation scheduling offered by the car share organization manager, an office assistant to the manager, or by a contract scheduling service. Reservation calls are estimated to average 40 per day, requiring several hours to complete. If the manager is to deliver a high service level as anticipated, handling reservation services would prove to be a major distraction. Having an office assistant perform scheduling is the least expensive option. However, since this would clearly be restricted to office hours, this may be a limitation for some members. 
+Reservations by Web
+It is anticipated that the majority of members will use the Web reservations interface. Such a system has all the attributes desired, and is the recommended option. It is available 24-hours a day, 7 days a week, and offers toll-free access to members. Web access features the usual login and password authentication. 
+Reservations by Contract Scheduler 
+A contract scheduling service will provide telephone reservation services. 
+The contractor’s interface to the Web reservations system will recognize the incoming call and brings up an appropriate screen. The operator will be prompted at each step by computer screens, from initial greeting to close. It will include such things as a final reminder to the member to record the reservation time and date. 
+Member Car Share Reservation and Use Scenario 
+A description below shows how a member might make a reservation and use the car share service and what policies may be needed to regulate how vehicles are used.
+    1. When wanting to use a car share vehicle, members contact the scheduling system through one of several interfaces (telephone or internet), and identify themselves. Their preferences (preferred vehicle type and location) are then loaded, and the member is asked to confirm the preferences for this reservation, and given the option to change the preferences permanently, or for this reservation session only.
+    2. The member is prompted for the desired date, time, and duration of vehicle use. There are no restrictions on scheduling vehicles except that vehicles may only be reserved for 90 days in advance. 
+    3. If a preferred vehicle is not available at the desired time and location, alternative vehicle types and locations are offered. Other car share locations may be nearly as convenient and a different start time may be acceptable to the member. Typically, the closest location is within a five-minute walk. 
+    4. When a reservation is successfully completed, it is recorded and an email confirmation is generated and sent to the member. (For telephone reservations the clerk reminds the member of the details).
+    5. A member may make any number of reservations in a given Web or telephone reservations session.
+    6. Once at the car, the member places the SmartCard above the detector field on the windshield. The on-board computer verifies first the user card, then the reservation and unlocks the car doors. As an added security measure, once in the car, the member is prompted to enter a personal identification number (PIN code) to access the car’s ignition key which is placed in an electronically controlled holder in the glove compartment. During your trip the key is used to lock the car as usual. 
+
+    7. Members are responsible for fueling. If, while using a vehicle, the fuel goes below one-quarter tank, the member is expected to re-fule. A fleet gas credit card is placed in each vehicle. These cards are restricted for fuel purchases only, and require that a vehicle number, odometer reading, and PIN be entered.
+
+    8. Other, unforeseen expenses incurred during a trip are paid by the member who then files an expense claim for reimbursement. If approved, the member’s account is credited.
+    9. When returning the vehicle, the ignition key is put back in the holder in the glove compartment. The on-board computer displays the trip data and automatically sends it to the central office. The member locks the car with the SmartCard. 
+    10. Combining reservation and trip data, the billing software generates an itemized charge that is added to the member’s account.
+Billing and Payment 
+Car share members receive a monthly billing statement, whether or not they have a current balance. This is designed to maintain regular contact with members, even though many of them may not be regular users of car sharing. For example, the statement information will include a newsletter with Car Sharing news, availability reports, and news about changes to vehicles and locations. 
+Members may choose to receive their statements and newsletters by email. This can be used to make member communications two-way rather than one-way (as typically occurs). 
+Automatic billing to a credit card or bank account is a preferred choice, although payment by check will be accepted. 
+Members failing to keep their accounts current (more than 30 days late) may have their privileges suspended if they do not make satisfactory payment arrangements. This means that they cannot make new reservations, and their pending reservations are cancelled.
+Communications 
+Member communications seeks to retain members, present information on other mobility options, and promote safe driving habits. 
+For example, the back of the billing statement could feature the monthly newsletter about the car sharing organization. It will remind members of important issues regarding car sharing and some of the responsibilities they undertaken in sharing vehicles.  Some of this information may be seasonal. Reminders of how to drive carefully during inclement weather and how and when traction devices are to be used could be included in early winter newsletters. Proper use of bike and ski racks could be part of seasonal reminders. 
+The newsletter could inform members about the organization’s status such as the number of members, number of vehicles, and the vehicle availability rate for the past month. The newsletter could offer any additional features or benefits, or share other important news regarding local car share offerings. 
+Further, the presentation of mobility options can be announced in the newsletters. For example, information on bus trip planning could be included in the newsletter, or members could be invited to a member forum on bike commuting.
+Evaluation
+Monitoring and measurement is required because the car share pilot project seeks to meet business, social, and service goals. Every aspect of the operations will require regularly scheduled reports, as well as a facility for on-demand reports as required by management. These reports will include (but are not limited to):
+    • Membership recruitment and retention
+    • Membership preference trends (vehicle type, preferred locations)
+    • Vehicle availability and usage
+    • Reservations patterns by member, location, vehicle, day-of-week, time-of-day, duration, etc.
+    • Trip statistics – duration, charges, etc.

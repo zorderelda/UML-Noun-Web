@@ -4,7 +4,7 @@ window.onload = function(event)
     //doFillFetch();
 
     // Disable download
-    document.getElementById('download-group').setAttribute('disabled', '');
+    document.getElementById('top-dl-button').setAttribute('disabled', '');
     
     document.addEventListener('click', function (event) 
     {
@@ -57,7 +57,11 @@ window.onload = function(event)
     document.getElementById('upload').addEventListener('change', function(event)
     {
         // Disable download
-        document.getElementById('download-group').setAttribute('disabled', '');
+        let button = document.getElementById('top-dl-button')
+        button.setAttribute('disabled', '');
+        button.children[0].classList.add('visually-hidden');
+        button.children[1].classList.remove('visually-hidden');
+        button.children[2].classList.remove('visually-hidden');
 
         let form = document.getElementById('formFile');
         let data = new FormData(form);
@@ -130,7 +134,11 @@ async function doFillFetch()
         document.getElementById('tableview').innerHTML = data['tableview'];
 
         // Enable the download
-        document.getElementById('download-group').removeAttribute('disabled');
+        let button = document.getElementById('top-dl-button')
+        button.removeAttribute('disabled');
+        button.children[0].classList.remove('visually-hidden');
+        button.children[1].classList.add('visually-hidden');
+        button.children[2].classList.add('visually-hidden');
     })
 
     .catch(function (error) 

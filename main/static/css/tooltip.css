@@ -1,11 +1,13 @@
-.my-tooltip {
+.my-tooltip 
+{
     position: relative;
     display: inline-block;
     border-bottom: 1px dotted black;
     color: red;
-  }
-  
-  .my-tooltip .my-tooltiptext {
+}
+
+.my-tooltip .my-tooltiptext 
+{
     visibility: hidden;
     width: 120px;
     background-color: black;
@@ -18,9 +20,10 @@
     bottom: 100%;
     left: 50%;
     margin-left: -60px;
-  }
-  
-  .my-tooltip .my-tooltiptext::after {
+}
+
+.my-tooltip .my-tooltiptext::after 
+{
     content: "";
     position: absolute;
     top: 100%;
@@ -29,14 +32,9 @@
     border-width: 5px;
     border-style: solid;
     border-color: black transparent transparent transparent;
-  }
-  
-  .my-tooltip:hover .my-tooltiptext {
-    visibility: visible;
-  }
+}
 
-.my-tooltiptext ul
+.my-tooltip:hover .my-tooltiptext 
 {
-    list-style-type: none;
-    padding-left:0;
+    visibility: visible;
 }

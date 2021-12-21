@@ -1,37 +1,29 @@
-import os
 from flask import Flask
 from flask_dotenv import DotEnv
 from datetime import timedelta
 
-import redis
-from os import environ
+app = Flask(__name__)
 
 # Local
 from config import config
+app.config.from_object(config['development'])
 
-def create_app():
+# Import the .env file
+env = DotEnv()
+env.init_app(app)
 
-    app = Flask(__name__)
-    app.config.from_object(config['development'])
+# Setup session stuff
+app.permanent_session_lifetime = timedelta(minutes=5)
 
-    # Import the .env file
-    env = DotEnv()
-    env.init_app(app)
+# register blueprint
+from main import main
+app.register_blueprint(main.bp)
 
-    # Setup session stuff
-    app.permanent_session_lifetime = timedelta(minutes=5)
+# Register stuff
+from main.main import sses, jwt
+sses.init_app(app)
+jwt.init_app(app)
 
-    # register blueprint
-    from main import main
-    app.register_blueprint(main.bp)
-
-    # Register stuff
-    from main.main import sses, jwt
-    sses.init_app(app)
-    jwt.init_app(app)
-
-    @app.context_processor
-    def utility_jwt_encode():
-        return dict(get_token=jwt.encode_jwt_token)
-
-    return app
+@app.context_processor
+def utility_jwt_encode():
+    return dict(get_token=jwt.encode_jwt_token)

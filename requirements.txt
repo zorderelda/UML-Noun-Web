@@ -4,9 +4,11 @@ Flask-WTF
 Flask-Dotenv
 python-dotenv
 nltk
+stop-words
 openpyxl
 PyJWT
 python-docx
 redis
 wordnet
 textract
+gunicorn

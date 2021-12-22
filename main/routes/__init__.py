@@ -21,7 +21,7 @@ def index():
     return render_template('index.html', form = form)#, nonce = nonce), 200, default_http_header
 
 # Create a compiled route
-@bp.route("/compile", methods=['GET', 'POST'])
+@bp.route("/compile", methods=['POST'])
 def compile():
 
     # Form to use in the standad
@@ -33,23 +33,27 @@ def compile():
         #f = request.files.get('upload')
         
         # Secure filename
+<<<<<<< HEAD
+        sfilename = os.path.join(current_app.config['UPLOAD_FOLDER'], secure_filename(f.filename))
+
+        # Save to the required path
+        f.save(sfilename)
+=======
         #sfilename = secure_filename(f.filename)
         
         f = form.upload.data
         sfilename = secure_filename(f.filename)
         f.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
+>>>>>>> 4e1361118d30e5ed74a664dcf6bf4bb2c957f15b
 
         # Assign to path
-        fpath = pathlib.Path(sfilename)
+        ext = pathlib.Path(sfilename).suffix.lower().replace('.', '')
 
         # Make sure there is a suffix
-        if fpath.suffix:
+        if ext:
            
             # Check filenames
-            if fpath.suffix.lower().replace('.', '') in current_app.config['ALLOWED_EXTENSIONS']:
-
-                # Save the file
-                f.save(sfilename)
+            if ext in current_app.config['ALLOWED_EXTENSIONS']:
 
                 # Extract the text from it
                 sfilename = ExtractText(sfilename)
@@ -57,8 +61,12 @@ def compile():
                 # Store in the session the Processed file
                 session['lines'], session['nouns'] = ProcessFile(sfilename)
 
-                # Return data completed
-                return jsonify({'completed': True})
+                # Compile the data here
+                return jsonify(
+                {
+                    'paperview': render_template("paperview.html", lines=session['lines']),
+                    'tableview': render_template("tableview.html", nouns=session['nouns'])
+                })
 
     # Tell user something wrong
     flash('Something wrong with file, please try again')
@@ -79,10 +87,10 @@ def fill():
         return jsonify({'completed': False})
 
     # Get the jwt
-    auth_token = request.headers.get('Authorization').split()[1]
+    token = request.headers.get('Authorization').split()[1]
 
     # Verify the JWT token
-    if jwt.decode_jwt_token(auth_token) != session.sid:
+    if jwt.decode_jwt_token(token) != session.sid:
 
         # Clear session
         session.clear()
@@ -114,9 +122,15 @@ def download():
 
     # Get the params
     which = request.args.get('which')
-    token = request.args.get('token')
+    
+    # Get the jwt
+    token = request.args.get('jwt')
+
+    # Confirm
     if which is None or token is None:
-        abort(404)
+        
+        # Refresh
+        return redirect(url_for('main.index'))
 
     # Verify the JWT token
     if jwt.decode_jwt_token(token) != session.sid:

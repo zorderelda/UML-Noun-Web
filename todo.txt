@@ -1,10 +1,5 @@
-Install
-sudo apt-get install < requirements.sys.tx
-python -m virtualenv venv
+Please remember to do the following after running the setup!
+
+sudo apt-get install < apt.txt
 source venv/bin/activate
 pip install -r requirements.txt
-python -c "import nltk; nltk.data.path.append('$(pwd)/venv/nltk_data')"
-python3 -c "import nltk; nltk.download('all-nltk')"
-nano .env
-	- Add UPLOADS_DIR -  echo "$(pwd)" >> .env
-	- Add SECRET_KEY - echo "SECRET_KEY=$(python3 -c "import os; print(os.urandom(64))") >> .env

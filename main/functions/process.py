@@ -6,9 +6,8 @@ from openpyxl.styles.borders import Border, Side
 from openpyxl import Workbook
 from docx.shared import RGBColor
 
-from nltk import pos_tag
+from nltk import wordpunct_tokenize, pos_tag
 from nltk.corpus import wordnet, stopwords
-from nltk.tokenize import wordpunct_tokenize
 
 def ExtractText(filename):
 

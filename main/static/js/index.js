@@ -111,7 +111,8 @@ window.onload = function(event)
 
 async function doFillFetch()
 {
-    let apiurl = document.querySelector('meta[name=data-api]').getAttribute('content') + 'fill';
+    //let apiurl = document.querySelector('meta[name=data-api]').getAttribute('content') + 'fill';
+    let apiurl = window.location.protocol + '//' + window.location.hostname + '/fill';
     let jwt = document.querySelector('meta[name=token]').getAttribute('content');
     let button = document.getElementById('top-dl-button');
 
@@ -154,7 +155,8 @@ async function doFillFetch()
 
 async function doDownloadFetch(value)
 {
-    let apiurl = new URL(document.querySelector('meta[name=data-api]').getAttribute('content') + 'download');
+    //let apiurl = new URL(document.querySelector('meta[name=data-api]').getAttribute('content') + 'download');
+    let apiurl = new URL(window.location.protocol + '//' + window.location.hostname + '/download');
     let jwt = document.querySelector('meta[name=token]').getAttribute('content');
 
     apiurl.searchParams.append('which', value);

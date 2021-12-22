@@ -1,4 +1,4 @@
-import tempfile, pathlib
+import os, tempfile, pathlib
 from flask import current_app, render_template, request, session, flash, jsonify, url_for, redirect, send_from_directory, abort
 from werkzeug.utils import secure_filename
 
@@ -30,10 +30,14 @@ def compile():
     if form.validate_on_submit():
 
         # Get uploaded filename
-        f = request.files.get('upload')
-
+        #f = request.files.get('upload')
+        
         # Secure filename
+        #sfilename = secure_filename(f.filename)
+        
+        f = form.upload.data
         sfilename = secure_filename(f.filename)
+        f.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
 
         # Assign to path
         fpath = pathlib.Path(sfilename)

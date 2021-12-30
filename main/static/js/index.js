@@ -99,7 +99,6 @@ async function performFetch(apiurl, options, func)
     {
         // Done
         func(data)
-        turnOnInteraction();
     })
 
     .catch(function (error) 
@@ -187,6 +186,7 @@ function fillText(data)
         // Put text into the areas
         document.getElementById('paperview').innerHTML = data['paperview'];
         document.getElementById('tableview').innerHTML = data['tableview'];
+        turnOnInteraction();
     }
 
     else
@@ -194,6 +194,7 @@ function fillText(data)
         // Put text into the areas
         document.getElementById('paperview').innerHTML = '';
         document.getElementById('tableview').innerHTML = '';
+        disableInteraction();
     }
 
 }

@@ -13,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('main.static', filename='css/index.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('main.static', filename='css/flashes.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url_for('main.static', filename='css/tooltip.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('main.static', filename='css/spinner.css') }}">
         
     </head>
     <body>
@@ -40,9 +41,7 @@
                             <div class="btn-group" role="group">
                                 <div class="btn-group" role="group">
                                   <button id="top-dl-button" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" disabled>
-                                    <span class="" role="status" aria-hidden="true">Download</span>
-                                    <span class="spinner-grow spinner-grow-sm visually-hidden" role="status" aria-hidden="true"></span>
-                                    <span class="visually-hidden" role="status" aria-hidden="true">Processing</span>
+                                    Download
                                   </button>
                                   <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                     <li><a class="dropdown-item" data-download="paperview">Paper View</a></li>
@@ -57,6 +56,13 @@
 
             </div>                
         </nav>
+
+        {# This will be loaded instead of the download button stuff #}
+        <div id="loading-overlay" class="visually-hidden">
+            <div class="overlay show"></div>
+                <div class="loader">Loading...</div>
+            </div>
+        </div>
 
         <div id="content" class="container-fluid mt-1 h-75">
 

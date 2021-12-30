@@ -80,6 +80,10 @@ async function performFetch(apiurl, options, func)
     // Get the JWT from file
     let jwt = getJwt();
 
+    // Get the full screen loader
+    let loader = document.getElementById('loading-overlay')
+    loader.classList.remove('visually-hidden');
+
     // Add the 
     options.headers = { 'Authorization': 'Bearer ' + jwt }
 
@@ -99,12 +103,13 @@ async function performFetch(apiurl, options, func)
     {
         // Done
         func(data)
+        loader.classList.add('visually-hidden');
     })
 
     .catch(function (error) 
     {
         console.warn(error);
-        disableInteraction();
+        loader.classList.add('visually-hidden');
     });
 }
 
@@ -154,9 +159,6 @@ function turnOffInteraction()
     // Disable download button
     let button = document.getElementById('top-dl-button');
     button.setAttribute('disabled', '');
-    button.children[0].classList.add('visually-hidden');
-    button.children[1].classList.remove('visually-hidden');
-    button.children[2].classList.remove('visually-hidden');
 }
 
 function turnOnInteraction()
@@ -164,19 +166,6 @@ function turnOnInteraction()
     // Enable download button
     let button = document.getElementById('top-dl-button');
     button.removeAttribute('disabled', '');
-    button.children[0].classList.remove('visually-hidden');
-    button.children[1].classList.add('visually-hidden');
-    button.children[2].classList.add('visually-hidden');
-}
-
-function disableInteraction()
-{
-    // Disable download button
-    let button = document.getElementById('top-dl-button')
-    button.setAttribute('disabled', '');
-    button.children[0].classList.remove('visually-hidden');
-    button.children[1].classList.add('visually-hidden');
-    button.children[2].classList.add('visually-hidden');
 }
 
 function fillText(data)
@@ -194,7 +183,7 @@ function fillText(data)
         // Put text into the areas
         document.getElementById('paperview').innerHTML = 'Placeholder content for this accordion.';
         document.getElementById('tableview').innerHTML = 'Placeholder content for this accordion.';
-        disableInteraction();
+        turnOffInteraction();
     }
 
 }

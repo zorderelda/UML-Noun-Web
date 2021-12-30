@@ -181,7 +181,7 @@ function disableInteraction()
 
 function fillText(data)
 {
-    if(data)
+    if('paperview' in data && 'tableview' in data)
     {
         // Put text into the areas
         document.getElementById('paperview').innerHTML = data['paperview'];

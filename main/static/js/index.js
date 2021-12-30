@@ -69,8 +69,7 @@ window.onload = function(event)
 
 async function performFetch(apiurl, options, func)
 {
-    //let apiurl = document.querySelector('meta[name=data-api]').getAttribute('content') + 'fill';
-    let apiurl = window.location.protocol + '//' + window.location.hostname + '/fill';
+    // Get the JWT from file
     let jwt = document.querySelector('meta[name=token]').getAttribute('content');
 
     // Add the 

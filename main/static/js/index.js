@@ -67,10 +67,15 @@ window.onload = function(event)
     });
 };
 
+function getJwt()
+{
+    return document.querySelector('meta[name=token]').getAttribute('content');
+}
+
 async function performFetch(apiurl, options, func)
 {
     // Get the JWT from file
-    let jwt = document.querySelector('meta[name=token]').getAttribute('content');
+    let jwt = getJwt();
 
     // Add the 
     options.headers = { 'Authorization': 'Bearer ' + jwt }
@@ -103,8 +108,8 @@ async function performFetch(apiurl, options, func)
 
 async function doFillFetch()
 {
-    let apiurl = document.querySelector('meta[name=data-api]').getAttribute('content') + 'fill';
-    //let apiurl = window.location.protocol + '//' + window.location.hostname + '/fill';
+    // Create the API URL
+    let apiurl = window.location.protocol + '//' + window.location.hostname + '/fill';
 
     let options = 
     {
@@ -130,9 +135,9 @@ async function doUpload()
 
 async function doDownload(value)
 {
-    //let apiurl = new URL(document.querySelector('meta[name=data-api]').getAttribute('content') + 'download');
+    // Create the API URL
     let apiurl = new URL(window.location.protocol + '//' + window.location.hostname + '/download');
-    let jwt = document.querySelector('meta[name=token]').getAttribute('content');
+    let jwt = getJwt();
 
     // Send the request to the api
     apiurl.searchParams.append('which', value);

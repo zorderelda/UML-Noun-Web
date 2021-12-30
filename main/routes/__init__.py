@@ -29,22 +29,10 @@ def compile():
     
     if form.validate_on_submit():
 
-        # Get uploaded filename
-        #f = request.files.get('upload')
-        
-        # Secure filename
-<<<<<<< HEAD
-        sfilename = os.path.join(current_app.config['UPLOAD_FOLDER'], secure_filename(f.filename))
-
-        # Save to the required path
-        f.save(sfilename)
-=======
-        #sfilename = secure_filename(f.filename)
-        
+        # Get uploaded file data and save it
         f = form.upload.data
         sfilename = secure_filename(f.filename)
-        f.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
->>>>>>> 4e1361118d30e5ed74a664dcf6bf4bb2c957f15b
+        f.save(os.path.join(current_app.config['UPLOAD_FOLDER'], sfilename))
 
         # Assign to path
         ext = pathlib.Path(sfilename).suffix.lower().replace('.', '')

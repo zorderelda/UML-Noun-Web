@@ -74,6 +74,9 @@ function getJwt()
 
 async function performFetch(apiurl, options, func)
 {
+    // Disable
+    turnOffInteraction();
+
     // Get the JWT from file
     let jwt = getJwt();
 
@@ -102,7 +105,7 @@ async function performFetch(apiurl, options, func)
     .catch(function (error) 
     {
         console.warn(error);
-        turnOnInteraction();
+        disableInteraction();
     });
 }
 
@@ -145,4 +148,52 @@ async function doDownload(value)
     
     // Get the file
     window.location = apiurl.href
+}
+
+function turnOffInteraction()
+{
+    // Disable download button
+    let button = document.getElementById('top-dl-button');
+    button.setAttribute('disabled', '');
+    button.children[0].classList.add('visually-hidden');
+    button.children[1].classList.remove('visually-hidden');
+    button.children[2].classList.remove('visually-hidden');
+}
+
+function turnOnInteraction()
+{
+    // Enable download button
+    let button = document.getElementById('top-dl-button');
+    button.removeAttribute('disabled', '');
+    button.children[0].classList.remove('visually-hidden');
+    button.children[1].classList.add('visually-hidden');
+    button.children[2].classList.add('visually-hidden');
+}
+
+function disableInteraction()
+{
+    // Disable download button
+    let button = document.getElementById('top-dl-button')
+    button.setAttribute('disabled', '');
+    button.children[0].classList.remove('visually-hidden');
+    button.children[1].classList.add('visually-hidden');
+    button.children[2].classList.add('visually-hidden');
+}
+
+function fillText(data)
+{
+    if(data)
+    {
+        // Put text into the areas
+        document.getElementById('paperview').innerHTML = data['paperview'];
+        document.getElementById('tableview').innerHTML = data['tableview'];
+    }
+
+    else
+    {
+        // Put text into the areas
+        document.getElementById('paperview').innerHTML = '';
+        document.getElementById('tableview').innerHTML = '';
+    }
+
 }

@@ -62,9 +62,9 @@ After=network.target
 [Service]
 User=user
 Group=user
-WorkingDirectory="%PROJECTPATH%"
-Environment="PATH=%VENVPATH%/bin"
-ExecStart="%VENVPATH%/bin/gunicorn -w 3 --bind 127.0.0.1:8000 wsgi:app'
+WorkingDirectory=%PROJECTPATH%
+Environment=PATH=%VENVPATH%/bin
+ExecStart=%VENVPATH%/bin/gunicorn -w 3 --bind 127.0.0.1:8000 wsgi:app
 Restart=always
 
 [Install]

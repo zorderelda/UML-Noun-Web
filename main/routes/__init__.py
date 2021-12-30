@@ -1,4 +1,4 @@
-import os, tempfile, pathlib
+import tempfile, pathlib
 from flask import current_app, render_template, request, session, flash, jsonify, url_for, redirect, send_from_directory, abort
 from werkzeug.utils import secure_filename
 
@@ -32,10 +32,11 @@ def compile():
         # Get uploaded file data and save it
         f = form.upload.data
         sfilename = secure_filename(f.filename)
-        f.save(os.path.join(current_app.config['UPLOAD_FOLDER'], sfilename))
+        file_path = pathlib.Path(current_app.config['UPLOADS_DIR']).joinpath(sfilename)
+        f.save(str(file_path))
 
         # Assign to path
-        ext = pathlib.Path(sfilename).suffix.lower().replace('.', '')
+        ext = file_path.suffix.lower().replace('.', '')
 
         # Make sure there is a suffix
         if ext:
@@ -44,7 +45,7 @@ def compile():
             if ext in current_app.config['ALLOWED_EXTENSIONS']:
 
                 # Extract the text from it
-                sfilename = ExtractText(sfilename)
+                sfilename = ExtractText(str(file_path))
                 
                 # Store in the session the Processed file
                 session['lines'], session['nouns'] = ProcessFile(sfilename)

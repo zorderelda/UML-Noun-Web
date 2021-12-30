@@ -37,16 +37,6 @@ uploads_path = project_path.joinpath('uploads')
 uploads_path.mkdir(parents=True, exist_ok=True)
 print("Created Uploads directory at", str(uploads_path), "if it wasn't there")
 
-# Check for the .env file, if not there then write it
-if not project_path.joinpath('.env').is_file():
-
-    print('Creating the .env file')
-
-    with open('.env', 'w') as f:
-        f.write('FLASK_APP="uml"\n')
-        f.write('UPLOADS_DIR="%s"\n' % str(uploads_path))
-        f.write('SECRET_KEY="%s"\n' % os.urandom(64))
-
 # Create the services folder
 services_path = project_path.joinpath('services')
 
@@ -109,7 +99,7 @@ print("Created data direcotry at", str(data_path), "if it wasn't there")
 
 # Get the packages required
 import nltk
-for down in ['stopwords', 'wordnet']:
+for down in ['stopwords', 'wordnet', 'averaged_perceptron_tagger', 'omw-1.4']:
     print('Downloading NLTK stopwords and wordnet')
     nltk.download(down, download_dir=str(data_path))
     print('Done Downloading')
@@ -131,3 +121,14 @@ try:
 
 except:
     print(text)
+
+# Check for the .env file, if not there then write it
+if not project_path.joinpath('.env').is_file():
+
+    print('Creating the .env file')
+
+    with open('.env', 'w') as f:
+        f.write('FLASK_APP="uml"\n')
+        f.write('UPLOADS_DIR="%s"\n' % str(uploads_path))
+        f.write('NLTK_DOWNLOAD_DIR="%s"\n' % str(data_path))
+        f.write('SECRET_KEY="%s"\n' % os.urandom(64))

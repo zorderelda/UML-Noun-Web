@@ -1,4 +1,4 @@
-apt install redis
-apt install python3-virtualenv
-apt install python3-nltk
-apt install antiword
+redis
+python3-virtualenv
+python3-nltk
+antiword

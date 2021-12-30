@@ -192,8 +192,8 @@ function fillText(data)
     else
     {
         // Put text into the areas
-        document.getElementById('paperview').innerHTML = '';
-        document.getElementById('tableview').innerHTML = '';
+        document.getElementById('paperview').innerHTML = 'Placeholder content for this accordion.';
+        document.getElementById('tableview').innerHTML = 'Placeholder content for this accordion.';
         disableInteraction();
     }
 

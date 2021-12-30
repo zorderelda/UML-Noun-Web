@@ -1,14 +1,7 @@
+import nltk
 from flask import Flask
 from flask_dotenv import DotEnv
 from datetime import timedelta
-
-# Check for stop words
-try:
-    from nltk.corpus import stopwords
-    'test' in stopwords.words('english')
-except:
-    import nltk
-    nltk.download('stopwords')
 
 app = Flask(__name__)
 
@@ -19,6 +12,9 @@ app.config.from_object(config['development'])
 # Import the .env file
 env = DotEnv()
 env.init_app(app)
+
+# Set the datapath for nltk
+nltk.data.path.append(app.config['NLTK_DOWNLOAD_DIR'])
 
 # Setup session stuff
 app.permanent_session_lifetime = timedelta(minutes=5)

@@ -1,8 +1,4 @@
 from os import environ
-from dotenv import load_dotenv
-
-# Load the variables
-load_dotenv()
 
 class Config:
     
@@ -11,7 +7,6 @@ class Config:
     SESSION_TYPE = "redis"
     SESSION_PERMANENT = False
     SESSION_USE_SIGNER = True
-    #UPLOAD_FOLDER = environ.get('UPLOAD_FOLDER') # Get from the .env
     ALLOWED_EXTENSIONS = ('txt', 'pdf', 'doc', 'docx', 'csv', 'epub', 'pptx', 'ppt', 'odt', 'rtf', 'xlsx', '', 'xls')
     
 

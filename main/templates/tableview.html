@@ -1,10 +1,10 @@
+{% filter indent(width=4) %}
 <div class="card-header">
     Table View of the Nouns and Synonyms
 </div>
 <div class="card-body">
     <table class="table table-success table-hover table-striped table-bordered border-primary">
         <tbody>
-
             <thead>
                 <tr>
                     <th>#</th>
@@ -13,29 +13,25 @@
                 </tr>
             </thead>
 
-            {% for word, lst in nouns.items() %}
-                <tr>
+            {%+ for word, lst in nouns.items() %}
+            <tr>
                 <td>
                     {{ loop.index }}
-                </td>
-                
+                </td>                
                 <td>
                     <div id="{{ word }}-table">{{ word }}</div>
                 </td>
-
                 <td>
-                    
-                    {% if lst is not none %} 
-                        {% for syn in lst %}
-                            <a href="#{{ syn }}-table" data-link="0">{{ syn }}</a>
-                        {% endfor %}
-                    {% endif %}
-
+            {% if lst is not none %} 
+                {% for syn in lst %}
+                    <a href="#{{ syn }}-table" data-link="0">{{ syn }}</a>
+                {% endfor %}
+            {% endif %}
                 </td>
-                </tr>
-
-            {% endfor %}
+            </tr>
+            {% endfor +%}
 
         </tbody>
     </table>
 </div>
+{% endfilter %}

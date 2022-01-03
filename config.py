@@ -7,7 +7,7 @@ class Config:
     SESSION_TYPE = "redis"
     SESSION_PERMANENT = False
     SESSION_USE_SIGNER = True
-    ALLOWED_EXTENSIONS = ('txt', 'pdf', 'doc', 'docx', 'csv', 'epub', 'pptx', 'ppt', 'odt', 'rtf', 'xlsx', '', 'xls')
+    ALLOWED_EXTENSIONS = ('txt', 'pdf', 'doc', 'docx', 'csv', 'epub', 'pptx', 'ppt', 'odt', 'rtf', 'xlsx', '', 'xls', 'html', 'htm')
     
 
 class DevelopmentConfig(Config):

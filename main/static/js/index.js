@@ -1,7 +1,8 @@
 window.onload = function(event) 
 {
     // Now get the api data
-    doFillFetch();
+    doFetch('paperview');
+    doFetch('tableview');
     
     document.addEventListener('click', function (event) 
     {
@@ -72,8 +73,11 @@ function getJwt()
     return document.querySelector('meta[name=token]').getAttribute('content');
 }
 
-async function performFetch(apiurl, options, func)
+async function doUpload()
 {
+    let form = document.getElementById('formFile');
+    let data = new FormData(form);
+
     // Disable
     turnOffInteraction();
 
@@ -84,11 +88,13 @@ async function performFetch(apiurl, options, func)
     let loader = document.getElementById('loading-overlay')
     loader.classList.remove('visually-hidden');
 
-    // Add the 
-    options.headers = { 'Authorization': 'Bearer ' + jwt }
-
     // Perform the fetch
-    fetch(apiurl, options)
+    fetch(form.action, 
+        {
+            headers: { 'Authorization': 'Bearer ' + jwt },
+            method: 'POST',
+            body: data
+        })
     
     .then(function (response) 
     {
@@ -102,7 +108,16 @@ async function performFetch(apiurl, options, func)
     .then(function (data) 
     {
         // Done
-        func(data)
+        if('completed' in data)
+        {
+            // Now get the api data
+            if(data['completed'] == true)
+            {
+                doFetch('paperview');
+                doFetch('tableview');
+            }
+        }
+
         loader.classList.add('visually-hidden');
     })
 
@@ -113,31 +128,47 @@ async function performFetch(apiurl, options, func)
     });
 }
 
-async function doFillFetch()
+async function doFetch(which)
 {
-    // Create the API URL
-    let apiurl = window.location.protocol + '//' + window.location.hostname + '/fill';
+    // Disable
+    turnOffInteraction();
 
-    let options = 
-    {
-        method: 'POST'
-    }
+    // Get the full screen loader
+    let loader = document.getElementById('loading-overlay')
+    loader.classList.remove('visually-hidden');
+
+    // Get the JWT from file
+    let jwt = getJwt();
+
+    let apiurl = new URL(window.location.protocol + '//' + window.location.hostname + '/get')
+    apiurl.searchParams.append('value', which);
+    apiurl.searchParams.append('token', jwt);
+
+    // Perform the fetch
+    fetch(apiurl)
     
-    performFetch(apiurl, options, fillText);
-}
-
-async function doUpload()
-{
-    let form = document.getElementById('formFile');
-    let data = new FormData(form);
-
-    let options = 
+    .then(function (response) 
     {
-        method: 'POST',
-        body: data
-    }
-    
-    performFetch(form.action, options, fillText);
+        if(response.ok) 
+        {
+            return response.text();
+        }
+        return Promise.reject(response);
+    })
+
+    .then(function (data) 
+    {
+        // Put text into the areas
+        document.getElementById(which).innerHTML = data;
+        turnOnInteraction();
+        loader.classList.add('visually-hidden');
+    })
+
+    .catch(function (error) 
+    {
+        console.warn(error);
+        loader.classList.add('visually-hidden');
+    });
 }
 
 async function doDownload(value)
@@ -166,24 +197,4 @@ function turnOnInteraction()
     // Enable download button
     let button = document.getElementById('top-dl-button');
     button.removeAttribute('disabled', '');
-}
-
-function fillText(data)
-{
-    if('paperview' in data && 'tableview' in data)
-    {
-        // Put text into the areas
-        document.getElementById('paperview').innerHTML = data['paperview'];
-        document.getElementById('tableview').innerHTML = data['tableview'];
-        turnOnInteraction();
-    }
-
-    else
-    {
-        // Put text into the areas
-        document.getElementById('paperview').innerHTML = 'Placeholder content for this accordion.';
-        document.getElementById('tableview').innerHTML = 'Placeholder content for this accordion.';
-        turnOffInteraction();
-    }
-
 }

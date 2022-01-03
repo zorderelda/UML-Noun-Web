@@ -1,55 +1,39 @@
+{% filter indent(width=4) %}
 <div class="card-header">
     Paper View of the Nouns and Synonyms
 </div>
 <div class="card-body">
     
-    {# LOOP THE LIST OF LINES, SOME ARE STRINGS AND SOME ARE DICTIONARIES #}
-    {% for line in lines %}
-
-        {# LOOP EACH INDIVIDUAL ITEMS FROM WITHIN THE LIST, SIMILAR TO SPLIT() #}
-        {% for item in line %}
-
-            {# CHECK IF ITEM IS A DICTIONARY #}
-            {% if item is mapping  %}
-
-                {# LOOP THE DICTIONARY OF ITEMS #}
-                {% for word, lst in item.items() %}
-
-                    {# CHECK IF LST IS EMPTY #}
-                    {% if lst is none %}
-
-                        {# ITS JUST A STRING SO PRINT IT AS A NOUN #}
-                        <a id="{{ word }}-tooltip" class="noun">{{ word }}</a>
-                        
-                    {# OR HAS ELEMENTS #}
-                    {% else %}
-
-                        <div id="{{ word }}-tooltip" class="my-tooltip">
-                            {{ word }}
-                            <span class="my-tooltiptext">
-                                <ul>
-                                    {% for syn in lst %}
-                                    <li><a href="#{{ syn }}-tooltip" data-link="0">{{ syn }}</a></li>
-                                    {% endfor %}
-                                </ul>
-                            </span>
+{% for line in lines -%}
+    
+    {% for item in line -%}
+        
+        {%- if not item is mapping -%}
+            {{- item + " " -}}
+        {% else -%}
+        
+            {% for word, lst in item.items() %}
+                {% if lst is none -%}
+                    <a id="{{ word }}-tooltip" class="noun">{{ word }}</a>
+                {% else +%}
+                    <div id="{{ word }}-tooltip" class="my-tooltip">
+                        {{ word }}
+                        <div class="my-tooltiptext">
+                            <ul>
+                                {% for syn in lst %}
+                                    <li>
+                                        <a href="#{{ syn }}-tooltip" data-link="0">{{ syn }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
                         </div>
+                    </div>
+                {% endif -%}
+            {% endfor -%}
+        {% endif -%}
+    {% endfor -%}
+    <br />
+{% endfor -%}
 
-                    {% endif %}
-
-                {% endfor %}
-
-            {# OR JUST A STRING #}
-            {% else %}
-
-                {# PRINT OUT THE WORD ALONE #}
-                {{ item+" " }}
-
-            {% endif %}
-
-        {% endfor %}
-
-        <br />
-
-    {% endfor %}
 </div>
+{% endfilter %}

@@ -1,4 +1,4 @@
-import tempfile, pathlib
+import logging, tempfile, pathlib
 from flask import current_app, render_template, request, session, flash, jsonify, url_for, redirect, send_from_directory, abort
 from werkzeug.utils import secure_filename
 
@@ -26,6 +26,14 @@ def compile():
 
     # Form to use in the standad
     form = UploadForm()
+    current_app.logger.debug('Compile Called')
+
+    # Delete the session variables if there
+    if 'lines' in session:
+        del session['lines']
+
+    if 'nouns' in session:
+        del session['nouns']
     
     if form.validate_on_submit():
 
@@ -44,58 +52,69 @@ def compile():
             # Check filenames
             if ext in current_app.config['ALLOWED_EXTENSIONS']:
 
+                # Do log
+                current_app.logger.debug("File: %s" % str(file_path))
+
                 # Extract the text from it
                 sfilename = ExtractText(str(file_path))
+
+                # Do log
+                current_app.logger.debug("File Extracted")
                 
                 # Store in the session the Processed file
                 session['lines'], session['nouns'] = ProcessFile(sfilename)
 
-                # Compile the data here
-                return jsonify(
-                {
-                    'paperview': render_template("paperview.html", lines=session['lines']),
-                    'tableview': render_template("tableview.html", nouns=session['nouns'])
-                })
+                # Do Log
+                current_app.logger.debug("Completed Compile")
+
+                return jsonify({ 'completed': True })
+
+    current_app.logger.debug("Something went bad")
 
     # Tell user something wrong
     flash('Something wrong with file, please try again')
 
     # Refresh
     return redirect(url_for('main.index'))
-
+    
 # Create a compiled route
-@bp.route("/fill", methods=['POST'])
-def fill():
+@bp.route("/get")
+def get():
 
     if 'lines' not in session and 'nouns' not in session:
 
         # Tell user to upload a file!
         flash('Please select a file first')
 
-        # Return data completed
-        return jsonify({'completed': False})
-
-    # Get the jwt
-    token = request.headers.get('Authorization').split()[1]
-
-    # Verify the JWT token
-    if jwt.decode_jwt_token(token) != session.sid:
-
-        # Clear session
-        session.clear()
-
-        # Tell user to upload a file!
-        flash('Token Expired, refreshing page, please upload again')
-
         # Refresh
         return redirect(url_for('main.index'))
 
-    # Compile the data here
-    return jsonify(
-        {
-            'paperview': render_template("paperview.html", lines=session['lines']),
-            'tableview': render_template("tableview.html", nouns=session['nouns'])
-        })
+    # Get the data
+    data = request.args
+    if 'value' in data and 'token' in data:
+
+        token = request.args.get('token')
+
+        # Verify the JWT token
+        if jwt.decode_jwt_token(token) != session.sid:
+
+            # Clear session
+            session.clear()
+
+            # Tell user to upload a file!
+            flash('Token Expired, refreshing page, please upload again')
+
+            # Refresh
+            return redirect(url_for('main.index'))
+
+        # Get which template to get
+        which = request.args.get('value')
+
+        # Compile the data here
+        return render_template("paperview.html", lines=session['lines']) if which == 'paperview' else  render_template("tableview.html", nouns=session['nouns'])
+
+    # Retrun failure
+    return jsonify({ 'completed': False })
 
 # Create a compiled route
 @bp.route("/download")

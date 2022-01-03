@@ -3,11 +3,13 @@
 .coverage
 .flaskenv
 .env
+venv/
 services/
 services/*
-venv/
 uploads/
 uploads/*
+logging/
+*.log
 *.pyc
 __pycache__/
 htmlcov/
